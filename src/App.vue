@@ -1,28 +1,30 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-main>
+      <v-app-bar app>
+        <b-col class="font-weight-bold black--text d-flex">
+          <v-app-bar-title class="d-flex align-center">Cards</v-app-bar-title>
+        </b-col>
+      </v-app-bar>
+      <v-container>
+        <ListCardPeople></ListCardPeople>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ListCardPeople from "@/components/ListCardPeople";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  name: "App",
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  components: {
+    ListCardPeople,
+  },
+
+  data: () => ({
+    //
+  }),
+};
+</script>
