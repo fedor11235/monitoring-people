@@ -2,9 +2,9 @@
   <v-app>
     <v-main>
       <v-app-bar app>
-        <b-col class="font-weight-bold black--text d-flex">
+        <v-col class="font-weight-bold black--text d-flex">
           <v-app-bar-title class="d-flex align-center">Cards</v-app-bar-title>
-        </b-col>
+        </v-col>
       </v-app-bar>
       <v-container>
         <ListCardPeople></ListCardPeople>

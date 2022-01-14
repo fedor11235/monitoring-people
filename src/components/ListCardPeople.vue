@@ -1,77 +1,40 @@
 <template>
   <v-row class="card__component py-4">
     <v-row class="card__list mx-2">
-      <v-col v-for="card in cards" :key="card.id" md="4">
-        <v-card class="card__people" height="435" width="270" >
-          <v-img height="155" :src="card.img"></v-img>
-          <v-card-title>{{ card.name }}</v-card-title>
-          <v-card-subtitle>{{ card.role }}</v-card-subtitle>
-          <v-card-text>Profit</v-card-text>
-          <v-progress-linear></v-progress-linear>
-          <v-card-text>Attention</v-card-text>
-          <v-progress-linear></v-progress-linear>
-        </v-card>
+      <v-col v-if="errored">We were unable to download the information!</v-col>
+      <v-col v-if="loading" class="text-center">
+        <v-progress-circular indeterminate="true"></v-progress-circular>
+      </v-col>
+      <v-col v-for="card in cards" :key="card.Id" md="4" class="d-flex justify-center">
+        <CardPeople :card="card"></CardPeople>
       </v-col>
     </v-row>
   </v-row>
 </template>
 
 <script>
+import axios from "axios";
+import CardPeople from '@/components/CardPeople';
+
 export default {
   name: "ListCardPeople",
   data: () => ({
-    cards: [
-      {
-        id: 0,
-        img: "",
-        name: "Fedor",
-        role: "Vue programmer",
-        profit:200,
-        attention:44,
-      },
-      {
-        id: 1,
-        img: "",
-        name: "Fedor",
-        role: "Vue programmer",
-        attention:44,
-      },
-      {
-        id: 2,
-        img: "",
-        name: "Fedor",
-        role: "Vue programmer",
-        attention:44,
-      },
-            {
-        id: 3,
-        img: "",
-        name: "Fedor",
-        role: "Vue programmer",
-        attention:44,
-      },
-            {
-        id: 4,
-        img: "",
-        name: "Fedor",
-        role: "Vue programmer",
-        attention:44,
-      },
-            {
-        id: 5,
-        img: "",
-        name: "Fedor",
-        role: "Vue programmer",
-        attention:44,
-      },
-      {
-        id: 6,
-        img: "",
-        name: "Fedor",
-        role: "Vue programmer",
-        attention:44,
-      },
-    ],
+    cards: [],
+    errored: false,
+    loading: true,
   }),
+  components: {
+    CardPeople,
+  },
+  mounted() {
+    axios
+      .get("https://api.in.dev-team.club/people")
+      .then((response) => (this.cards = response.data))
+      .catch((error) => {
+        console.log(error);
+        this.errored = true;
+      })
+      .finally(() => (this.loading = false));
+  },
 };
 </script>
