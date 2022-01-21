@@ -81,7 +81,7 @@
 
 
 <script>
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 
 export default {
   data() {
@@ -102,7 +102,7 @@ export default {
           console.log(data.user)
         })
         .catch((err) => {
-          this.error = err.message;
+          this.error = err.message
         });
     },
   },

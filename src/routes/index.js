@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import Router from 'vue-router';
+import Vue from 'vue'
+import Router from 'vue-router'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import ListCardPeople from '@/components/ListCardPeople'
@@ -26,6 +26,6 @@ const router = new Router({
         component: ListCardPeople
     }
 ]
-});
+})
 
 export default router

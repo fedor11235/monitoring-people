@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
 
 export default {
   data() {
@@ -70,12 +70,12 @@ export default {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, this.form.email, this.form.password)
         .then((data) => {
-          const user = data.user;
-          console.log(user)
+          const user = data.user
+          console.log(user.stsTokenManager)
           this.$router.replace({ name: "List" });
         })
         .catch(err => {
-          this.error = err.message;
+          this.error = err.message
         });
     }
   }
