@@ -1,87 +1,23 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">Register</div>
-          <div class="card-body">
-            <div v-if="error" class="alert alert-danger">{{ error }}</div>
-            <form action="#" @submit.prevent="submit">
-              <div class="form-group row">
-                <label for="name" class="col-md-4 col-form-label text-md-right"
-                  >Name</label
-                >
-
-                <div class="col-md-6">
-                  <input
-                    id="name"
-                    type="name"
-                    class="form-control"
-                    name="name"
-                    value
-                    required
-                    autofocus
-                    v-model="form.name"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="email" class="col-md-4 col-form-label text-md-right"
-                  >Email</label
-                >
-
-                <div class="col-md-6">
-                  <input
-                    id="email"
-                    type="email"
-                    class="form-control"
-                    name="email"
-                    value
-                    required
-                    autofocus
-                    v-model="form.email"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label
-                  for="password"
-                  class="col-md-4 col-form-label text-md-right"
-                  >Password</label
-                >
-
-                <div class="col-md-6">
-                  <input
-                    id="password"
-                    type="password"
-                    class="form-control"
-                    name="password"
-                    required
-                    v-model="form.password"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group row mb-0">
-                <div class="col-md-8 offset-md-4">
-                  <button type="submit" class="btn btn-primary">
-                    Register
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div>
+    <v-card-title>Register</v-card-title>
+    <v-card-subtitle v-if="error">{{ error }}</v-card-subtitle>
+    <v-form ref="form" action="#" @submit.prevent="submit" class="mx-4">
+      <v-text-field v-model="form.name" label="Name" required></v-text-field>
+      <v-text-field v-model="form.email" label="E-mail" required></v-text-field>
+      <v-text-field
+        v-model="form.password"
+        label="Password"
+        type="Password"
+      ></v-text-field>
+      <v-btn type="submit">Login</v-btn>
+    </v-form>
   </div>
 </template>
 
 
 <script>
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default {
   data() {
@@ -96,13 +32,13 @@ export default {
   },
   methods: {
     submit() {
-      const auth = getAuth()
+      const auth = getAuth();
       createUserWithEmailAndPassword(auth, this.form.email, this.form.password)
         .then((data) => {
-          console.log(data.user)
+          console.log(data.user);
         })
         .catch((err) => {
-          this.error = err.message
+          this.error = err.message;
         });
     },
   },

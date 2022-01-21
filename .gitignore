@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 /dist
-people.sample.json
+sample.people.json
 
 
 # local env files

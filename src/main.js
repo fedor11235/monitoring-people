@@ -19,6 +19,7 @@ initializeApp(firebaseConfig)
 const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   store.dispatch("fetchUser", user)
+  console.log(user)
 });
 
 
