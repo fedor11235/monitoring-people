@@ -96,7 +96,7 @@ export default {
   },
   methods: {
     submit() {
-      const auth = getAuth();
+      const auth = getAuth()
       createUserWithEmailAndPassword(auth, this.form.email, this.form.password)
         .then((data) => {
           console.log(data.user)

@@ -20,7 +20,7 @@
 
 <script>
 import axios from "axios";
-import CardPeople from "@/components/CardPeople"
+import CardPeople from "@/components/CardPeople";
 
 export default {
   name: "ListCardPeople",
@@ -75,5 +75,5 @@ export default {
   mounted() {
     this.getNextCard();
   },
-}
+};
 </script>
