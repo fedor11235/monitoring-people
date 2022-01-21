@@ -1,39 +1,24 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-    <div class="container">
+  <v-toolbar flat=true>
       <router-link to="/" class="navbar-brand">Vue Firebase Auth</router-link>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto"></ul>
-        <ul class="navbar-nav ml-auto">
+          <v-spacer></v-spacer>
           <template v-if="user.loggedIn">
             <div class="nav-item">{{user.data.email}}</div>
-            <li class="nav-item">
-              <a class="nav-link" @click.prevent="signOutAuth">Sign out</a>
-            </li>
+            <v-spacer></v-spacer>
+            <v-link class="nav-item">
+              <a  @click.prevent="signOutAuth">Sign out</a>
+            </v-link>
           </template>
           <template v-else>
-            <li class="nav-item">
-              <router-link to="login" class="nav-link">Login</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="register" class="nav-link">Register</router-link>
-            </li>
+            <v-link class="nav-item">
+              <router-link to="login">Login/</router-link>
+            </v-link>
+            <v-link class="nav-item">
+              <router-link to="register">Register</router-link>
+            </v-link>
           </template>
-        </ul>
-      </div>
-    </div>
-  </nav>
+
+  </v-toolbar>
 </template>
 <script>
 import { mapGetters } from "vuex"
