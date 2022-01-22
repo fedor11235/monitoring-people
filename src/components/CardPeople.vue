@@ -1,7 +1,6 @@
 <template>
   <v-card class="card__people" height="420" width="260">
-    <v-img height="145" :src="card.Photo"></v-img>
-
+    <v-img height="145" :src="photo"></v-img>
     <v-card-title class="pt-2 pb-3 px-3">
       <span>{{ name }}</span>
       <v-spacer></v-spacer>
@@ -24,6 +23,7 @@
               label="Title"
               required
             ></v-text-field>
+            
             <v-btn icon  type="submit" @click.prevent="editCard">Edit</v-btn>
           </v-form>
         </v-list>
@@ -95,8 +95,8 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import axios from "axios";
+import { mapGetters } from "vuex"
+import axios from "axios"
 
 export default {
   name: "CardPeople",
@@ -105,7 +105,8 @@ export default {
     return {
       id: this.card.Id,
       name: this.card.Name,
-      title: this.card.Title
+      title: this.card.Title,
+      photo: this.card.Photo,
     };
   },
   computed: {
@@ -139,16 +140,16 @@ export default {
     },
 
     editCard() {
-      const headers = { "X-Auth-Token": this.user.data.authToken };
-      const data = { Name: this.name, Title: this.title };
-      const url = `https://api.in.dev-team.club/people/` + this.id;
+      const headers = { "X-Auth-Token": this.user.data.authToken }
+      const data = { Name: this.name, Title: this.title }
+      const url = `https://api.in.dev-team.club/people/` + this.id
       axios
         .post(url, data, { headers: headers })
         .then((res) => {
-          console.log(res.data);
+          console.log(res.data)
         })
         .catch((error) => {
-          console.error(error);
+          console.error(error)
         });
     },
   },

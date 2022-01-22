@@ -4,7 +4,7 @@
           <v-spacer></v-spacer>
           <template v-if="user.loggedIn">
             <div>{{user.data.email}}</div>
-            <input class="mx-2 search-input">
+            <!-- <input class="mx-2 search-input"> -->
             <v-spacer></v-spacer>
               <a  @click.prevent="signOutAuth">Sign out</a>
           </template>

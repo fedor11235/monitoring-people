@@ -6,7 +6,6 @@ import router from './routes/index'
 import store from "./store"
 import { initializeApp } from "firebase/app"
 import { getAuth, onAuthStateChanged } from "firebase/auth"
-
 import "dotenv/config"
 
 
@@ -21,12 +20,10 @@ initializeApp(firebaseConfig)
 const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   store.dispatch("fetchUser", user)
-  console.log(user)
 });
 
 
 Vue.config.productionTip = false
-
 Vue.use(VueRouter)
 
 new Vue({
