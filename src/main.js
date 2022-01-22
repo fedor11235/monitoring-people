@@ -6,7 +6,9 @@ import router from './routes/index'
 import store from "./store"
 import { initializeApp } from "firebase/app"
 import { getAuth, onAuthStateChanged } from "firebase/auth"
+
 import "dotenv/config"
+
 
 const firebaseConfig = {
   apiKey: process.env.VUE_APP_API_KEY,
@@ -24,6 +26,7 @@ onAuthStateChanged(auth, (user) => {
 
 
 Vue.config.productionTip = false
+
 Vue.use(VueRouter)
 
 new Vue({

@@ -3,7 +3,7 @@
     <v-row class="card__list mx-2">
       <v-col v-if="errored">We were unable to download the information!</v-col>
       <v-overlay :value="loading" class="text-center">
-        <v-progress-circular indeterminate="true"></v-progress-circular>
+        <v-progress-circular :indeterminate="true"></v-progress-circular>
       </v-overlay>
       <v-col
         v-for="card in cards"
@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import CardPeople from "@/components/CardPeople";
+import axios from "axios"
+import CardPeople from "@/components/CardPeople"
 
 export default {
   name: "ListCardPeople",

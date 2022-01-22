@@ -1,23 +1,17 @@
 <template>
-  <v-toolbar flat=true>
-      <router-link to="/" class="navbar-brand">Vue Firebase Auth</router-link>
+  <v-toolbar :flat="true">
+      <router-link to="/">Vue Firebase Auth</router-link>
           <v-spacer></v-spacer>
           <template v-if="user.loggedIn">
-            <div class="nav-item">{{user.data.email}}</div>
+            <div>{{user.data.email}}</div>
+            <input class="mx-2 search-input">
             <v-spacer></v-spacer>
-            <v-link class="nav-item">
               <a  @click.prevent="signOutAuth">Sign out</a>
-            </v-link>
           </template>
           <template v-else>
-            <v-link class="nav-item">
               <router-link to="login">Login/</router-link>
-            </v-link>
-            <v-link class="nav-item">
               <router-link to="register">Register</router-link>
-            </v-link>
           </template>
-
   </v-toolbar>
 </template>
 <script>
@@ -43,3 +37,13 @@ export default {
   }
 }
 </script>
+
+<style>
+.search-input{
+width: 189px;
+height: 20px;
+border: 1px solid #000000;
+border-radius: 7px;
+}
+
+</style>
